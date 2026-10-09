@@ -1,0 +1,14 @@
+.{
+    .name = .hello,
+    .version = "0.1.0",
+    .minimum_zig_version = "0.16.0",
+    .paths = .{ "build.zig", "build.zig.zon", "plugin.zig", "plugin.zig.zon", "README.md", "LICENSE" },
+    .fingerprint = 0x3610a686e2a05173,
+    .dependencies = .{
+        .fizzy = .{
+            // The published SDK: a plugin builds from a clean clone of its own repo.
+            .url = "https://github.com/fizzyedit/fizzy/releases/download/sdk-v0.2.18/fizzy-sdk-v0.2.18.tar.gz",
+            .hash = "fizzy-0.2.18-SGBwYzTcHgB679qozyk1xNBTyrOQYoKUNI5lvEX5_v6a",
+        },
+    },
+}

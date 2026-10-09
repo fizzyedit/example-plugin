@@ -1,0 +1,17 @@
+# Tagging `vX.Y.Z` builds every target and publishes the builds and a manifest.json on the
+# release. The tag must equal `version` in plugin.zig.zon. The SDK version and ABI fingerprint
+# come from the built dylib (the pinned fizzy SDK): do not copy them anywhere.
+#
+# build.zig.zon must pin the fizzy SDK by URL and hash (not a local path).
+name: Release
+on:
+  push:
+    tags: ["v*"]
+
+jobs:
+  build:
+    uses: fizzyedit/plugin-build-action/.github/workflows/build.yml@v6
+    permissions:
+      contents: write
+    with:
+      zig-version: "0.16.0"
