@@ -7,8 +7,8 @@
     .dependencies = .{
         .fizzy = .{
             // The published SDK: a plugin builds from a clean clone of its own repo.
-            .url = "https://github.com/fizzyedit/fizzy/releases/download/sdk-v0.2.22/fizzy-sdk-v0.2.22.tar.gz",
-            .hash = "fizzy-0.2.22-SGBwYx2gIQBOM6ZCnQHEj_9x7ytH5lrxbilM_k0Idcpt",
+            .url = "https://github.com/fizzyedit/fizzy/releases/download/sdk-v0.2.24/fizzy-sdk-v0.2.24.tar.gz",
+            .hash = "fizzy-0.2.24-SGBwYxxfIwAX-QlMINSocvPE682eiL90qcTR2TEYGxBZ",
         },
     },
 }
