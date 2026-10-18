@@ -1,5 +1,5 @@
-# Builds the plugin on every push and pull request. `FIZZY_PROFILE` keeps the install inside the
-# workspace (from fizzy SDK 0.2.19; before it, the runner's own config directory).
+# Checks every pull request and every push to main: formatting, a build for each desktop OS, the
+# build's `test` step if it has one, and (never failing the run) a build against fizzy main.
 name: CI
 on:
   push:
@@ -7,14 +7,14 @@ on:
   pull_request:
   workflow_dispatch:
 
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    env:
-      FIZZY_PROFILE: ${{ github.workspace }}/.profile
-    steps:
-      - uses: actions/checkout@v4
-      - uses: mlugg/setup-zig@v2
-        with:
-          version: "0.16.0"
-      - run: zig build --summary all
+  check:
+    uses: fizzyedit/plugin-build-action/.github/workflows/check.yml@v7
+    with:
+      zig-version: "0.16.0"
+    # secrets:
+    #   build_env: ${{ secrets.MY_BUILD_ENV }}   # as in release.yml, if the build needs one
